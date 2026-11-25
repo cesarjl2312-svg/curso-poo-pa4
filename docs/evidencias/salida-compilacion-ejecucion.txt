@@ -1,0 +1,49 @@
+$ javac -Xlint:all --release 17 -d out src/main/java/org/isil/*.java
+[compilación terminada con código de salida 0 — sin errores ni advertencias]
+
+$ java -cp out org.isil.Main
+=== 1. REGISTRO Y CONTROL DE DUPLICADOS (HashSet) ===
+Registrado: V-101
+Registrado: V-102
+Registrado: V-103
+Registrado: V-104
+Duplicado omitido: V-101
+Total registrados: 4
+
+=== 2. RECORRIDO CON FOR-EACH ===
+  - [V-101] Toyota Corolla (2024) | Base: S/ 120.00 | Diaria: S/ 135.00 | Puertas: 4 | Híbrido: Sí
+  - [V-102] Mitsubishi L200 (2023) | Base: S/ 160.00 | Diaria: S/ 209.00 | Carga: 1000 kg | 4x4: Sí
+  - [V-103] Hyundai Accent (2022) | Base: S/ 95.00 | Diaria: S/ 95.00 | Puertas: 4 | Híbrido: No
+  - [V-104] Nissan Frontier (2025) | Base: S/ 175.00 | Diaria: S/ 211.00 | Carga: 1500 kg | 4x4: No
+
+=== 3. INSPECCIÓN CON ITERATOR ===
+  - Inspección Auto [V-101]: frenos, luces, neumáticos y motor híbrido -> OK
+  - Inspección Camioneta [V-102]: suspensión, carga (1000.0 kg) y tracción 4x4 -> OK
+  - Inspección Auto [V-103]: frenos, luces, neumáticos y motor gasolina -> OK
+  - Inspección Camioneta [V-104]: suspensión, carga (1500.0 kg) y tracción 4x2 -> OK
+
+=== 4. BÚSQUEDA POR CÓDIGO ('V-102') ===
+Encontrado: [V-102] Mitsubishi L200 (2023) | Base: S/ 160.00 | Diaria: S/ 209.00 | Carga: 1000 kg | 4x4: Sí
+
+=== 5. ORDENAMIENTO POR TARIFA DIARIA (MENOR A MAYOR) ===
+  - [V-103] Hyundai Accent (2022) | Base: S/ 95.00 | Diaria: S/ 95.00 | Puertas: 4 | Híbrido: No
+  - [V-101] Toyota Corolla (2024) | Base: S/ 120.00 | Diaria: S/ 135.00 | Puertas: 4 | Híbrido: Sí
+  - [V-102] Mitsubishi L200 (2023) | Base: S/ 160.00 | Diaria: S/ 209.00 | Carga: 1000 kg | 4x4: Sí
+  - [V-104] Nissan Frontier (2025) | Base: S/ 175.00 | Diaria: S/ 211.00 | Carga: 1500 kg | 4x4: No
+
+=== 6. ORDENAMIENTO POR AÑO (MÁS RECIENTE A MÁS ANTIGUO) ===
+  - [V-104] Nissan Frontier (2025) | Base: S/ 175.00 | Diaria: S/ 211.00 | Carga: 1500 kg | 4x4: No
+  - [V-101] Toyota Corolla (2024) | Base: S/ 120.00 | Diaria: S/ 135.00 | Puertas: 4 | Híbrido: Sí
+  - [V-102] Mitsubishi L200 (2023) | Base: S/ 160.00 | Diaria: S/ 209.00 | Carga: 1000 kg | 4x4: Sí
+  - [V-103] Hyundai Accent (2022) | Base: S/ 95.00 | Diaria: S/ 95.00 | Puertas: 4 | Híbrido: No
+
+=== 7. ELIMINACIÓN CON iterator().remove() Y removeIf() ===
+Eliminar por código 'V-103' (iterator().remove()): eliminado
+Eliminar marca 'Mitsubishi' (removeIf()): 1 vehículo(s) eliminado(s)
+Total restante: 2
+Listado final:
+  - [V-101] Toyota Corolla (2024) | Base: S/ 120.00 | Diaria: S/ 135.00 | Puertas: 4 | Híbrido: Sí
+  - [V-104] Nissan Frontier (2025) | Base: S/ 175.00 | Diaria: S/ 211.00 | Carga: 1500 kg | 4x4: No
+Re-registro de 'V-103' tras la eliminación: OK
+Total final: 3
+[ejecución terminada con código de salida 0]
