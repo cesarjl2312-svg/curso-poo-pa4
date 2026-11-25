@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+### Salida de compilación (IntelliJ / Maven) ###
+out/
+*.class
