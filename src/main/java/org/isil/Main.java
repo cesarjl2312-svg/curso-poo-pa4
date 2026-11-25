@@ -41,6 +41,22 @@ public class Main {
         for (Vehiculo v : porAnio) {
             System.out.println("  - " + v);
         }
+
+        System.out.println("\n=== 7. ELIMINACIÓN CON iterator().remove() Y removeIf() ===");
+        boolean eliminado = gestor.eliminarPorCodigo("V-103");
+        System.out.println("Eliminar por código 'V-103' (iterator().remove()): "
+                + (eliminado ? "eliminado" : "no encontrado"));
+        int eliminados = gestor.eliminarPorMarca("Mitsubishi");
+        System.out.println("Eliminar marca 'Mitsubishi' (removeIf()): "
+                + eliminados + " vehículo(s) eliminado(s)");
+        System.out.println("Total restante: " + gestor.totalVehiculos());
+        System.out.println("Listado final:");
+        gestor.listarConForEach();
+
+        boolean reRegistrado = gestor.registrarVehiculo(v3);
+        System.out.println("Re-registro de 'V-103' tras la eliminación: "
+                + (reRegistrado ? "OK" : "rechazado por duplicado"));
+        System.out.println("Total final: " + gestor.totalVehiculos());
     }
 
     private static void registrarYMostrar(GestorFlota gestor, Vehiculo vehiculo) {

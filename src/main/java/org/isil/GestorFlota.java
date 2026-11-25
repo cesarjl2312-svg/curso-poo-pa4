@@ -75,6 +75,48 @@ public class GestorFlota {
         return ordenada;
     }
 
+    /**
+     * Elimina el vehículo con el código indicado usando iterator() y remove().
+     * También se retira del HashSet de códigos registrados para que el código
+     * pueda volver a registrarse después.
+     */
+    public boolean eliminarPorCodigo(String codigo) {
+        if (codigo == null) {
+            return false;
+        }
+        String buscado = codigo.trim().toUpperCase();
+        Iterator<Vehiculo> it = flota.iterator();
+        while (it.hasNext()) {
+            Vehiculo v = it.next();
+            if (v.getCodigo().equals(buscado)) {
+                it.remove();
+                codigosRegistrados.remove(v);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Elimina todos los vehículos de la marca indicada usando removeIf().
+     * Retorna la cantidad de vehículos eliminados.
+     */
+    public int eliminarPorMarca(String marca) {
+        if (marca == null || marca.isBlank()) {
+            return 0;
+        }
+        String buscada = marca.trim();
+        List<Vehiculo> aEliminar = new ArrayList<>();
+        for (Vehiculo v : flota) {
+            if (v.getMarca().equalsIgnoreCase(buscada)) {
+                aEliminar.add(v);
+            }
+        }
+        codigosRegistrados.removeAll(aEliminar);
+        flota.removeIf(v -> v.getMarca().equalsIgnoreCase(buscada));
+        return aEliminar.size();
+    }
+
     public int totalVehiculos() {
         return flota.size();
     }
