@@ -129,4 +129,4 @@ java -cp out org.isil.Main
 
 ## Video de exposición (YouTube)
 
-**Video público de YouTube:** [PEGAR AQUÍ EL ENLACE DEL VIDEO]
+**Video público de YouTube:** [https://drive.google.com/file/d/1Xu2qLOspoUJDp7IX6iYYL2PSCXMSmQ6Q/view?usp=sharing]
